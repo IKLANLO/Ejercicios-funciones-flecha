@@ -56,10 +56,19 @@ console.log(empiezanPorJ);
 
 // MAP
 
-// const mayoresDe25Map = gente.map(persona => persona > 25).filter((persona) => typeof persona === 'undefined')
-// console.log(mayoresDe25Map);
+const mayoresDe25Map = gente.map(persona => {
+  if(persona.edad > 25){
+    return persona
+  }
+}).filter(element => typeof element !== 'undefined')
+console.log(mayoresDe25Map);
 
-
+const empiezanPorJMap = gente.map(persona => {
+  if (persona.nombre[0] === 'J'){
+    return persona
+  }
+}).filter(persona => typeof persona !== 'undefined')
+console.log(empiezanPorJMap);
 
 const numbers = [ 4, 5, 6, 7, 8, 9, 10];
 const numbersElevated = numbers.map(number => number**number)
@@ -87,6 +96,8 @@ console.log(numerosMultiplicados);
 
 // EXTRAS
 
+// .map
+
 const staff = [
     {
       name: "Pepe",
@@ -113,3 +124,61 @@ const arrFrases = staff.map(person => `${person.name} es ${person.role} y le gus
 console.log(arrFrases);
 
 const foodList2 = ["Pizza", "Ramen", "Paella", "Entrecot"];
+const foodPhrase = foodList2.map(food => {
+  switch (food){
+    case 'Pizza':
+      food = `Como soy de Italia, amo comer ${food}`
+      break
+    case 'Ramen':
+      food = `Como soy de Japón, amo comer ${food}`
+      break
+    case 'Paella':
+      food = `Como soy de Valencia, amo comer ${food}`
+      break
+    case 'Entrecot':
+      food = `Aunque no como carne, el ${food} es sabroso`
+      break
+  }
+  return food
+})
+console.log(foodPhrase);
+
+// .filter
+
+const inventory = [
+  {
+    name: 'Mobile phone',
+    price: 199
+  },
+  {
+    name: 'TV Samsung',
+    price: 459
+  },
+  {
+    name: 'Viaje a cancún',
+    price: 600
+  },
+  {
+    name: 'Mascarilla',
+    price: 1
+  }
+];
+const masDeTrescientos = inventory.filter(element => element.price > 300).map(el => el.name)
+console.log(masDeTrescientos);
+
+// .reduce
+
+const sentenceElements = [
+  'Me',
+  'llamo',
+  'Iker',
+  'y',    
+  'quiero',
+  'sentir',
+  'la',
+  'fuerza',
+  'con',
+  'javascript'
+];
+const reducedSentence = sentenceElements.reduce((elem1, elem2) => elem1 + ' ' + elem2)
+console.log(reducedSentence);
